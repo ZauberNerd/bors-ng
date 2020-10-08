@@ -22,13 +22,14 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       # Runs a single command using the runners shell
       - name: Set-up git
         run: |
-          git config user.name "Deploy"
-          git config user.email "deploy@users.noreply.github.com"
-          git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git config user.name github-actions
+          git config user.email github-actions@github.com
       - name: Add upstream
         run: git remote add upstream https://github.com/bors-ng/bors-ng.git
       - name: Fetch upstream
