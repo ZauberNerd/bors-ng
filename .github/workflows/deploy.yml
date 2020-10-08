@@ -28,7 +28,7 @@ jobs:
         run: |
           git config user.name "Deploy"
           git config user.email "deploy@users.noreply.github.com"
-          git remote add origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
       - name: Add upstream
         run: git remote add upstream https://github.com/bors-ng/bors-ng.git
       - name: Fetch upstream
